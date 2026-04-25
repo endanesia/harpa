@@ -7,9 +7,9 @@ class Members extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('Access');
-        $this->load->model(array('Access_model'));
-        $this->load->helper('form');
+       // $this->load->library('Access');
+       // $this->load->model(array('Access_model'));
+       // $this->load->helper('form');
     }
 
     public function index()
