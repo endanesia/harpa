@@ -7,8 +7,8 @@ class Members extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('Access');
-        $this->load->model(array('Access_model'));
+        $this->load->library('access');
+        $this->load->model(array('access_model'));
         $this->load->helper('form');
     }
 
@@ -37,7 +37,7 @@ class Members extends CI_Controller
 
     public function logout()
     {
-        $this->Access->logout();
+        $this->access->logout();
         redirect('members/login');
     }
 
@@ -48,7 +48,7 @@ class Members extends CI_Controller
         $username = $this->input->post('username',TRUE);
 		$password = $this->input->post('password',TRUE);
 
-		$login= $this->Access->login($username,$password);
+		$login= $this->access->login($username,$password);
         echo "members username: $username, password: $password";
         die;
         if($username=="" || $password==""){
@@ -57,7 +57,7 @@ class Members extends CI_Controller
         }else{
             if ($login==200) {
                 $this->form_validation->set_message("authlogin","Selamat Datang ".$this->session->userdata('nama'));
-                $akses = json_encode($this->Access->get_akses_list($this->session->akses));
+                $akses = json_encode($this->access->get_akses_list($this->session->akses));
                 $sess['akses_list'] = $akses;
                 $this->session->set_userdata($sess);
                 return TRUE;
