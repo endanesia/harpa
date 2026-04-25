@@ -7,9 +7,9 @@ class Members extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-       // $this->load->library('Access');
-       // $this->load->model(array('Access_model'));
-       // $this->load->helper('form');
+        $this->load->library('Access');
+        $this->load->model(array('Access_model'));
+        $this->load->helper('form');
     }
 
     public function index()
@@ -19,8 +19,7 @@ class Members extends CI_Controller
 
     public function login()
     {
-        echo "test";
-        die;
+
         if ($this->session->has_userdata('userid')) {
             redirect('dashboard/');
         }
@@ -45,6 +44,8 @@ class Members extends CI_Controller
 
     public function authlogin()
     {
+        echo "test";
+        die;
         $username = $this->input->post('username',TRUE);
 		$password = $this->input->post('password',TRUE);
 		$login= $this->access->login($username,$password);
