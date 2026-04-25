@@ -19,6 +19,8 @@ class Members extends CI_Controller
 
     public function login()
     {
+        echo "test";
+        die;
         if ($this->session->has_userdata('userid')) {
             redirect('dashboard/');
         }
