@@ -47,6 +47,8 @@ class Members extends CI_Controller
 
         $username = $this->input->post('username',TRUE);
 		$password = $this->input->post('password',TRUE);
+        echo "username: $username, password: $password";
+        die;
 		$login= $this->Access->login($username,$password);
         if($username=="" || $password==""){
             $this->form_validation->set_message("authlogin","Username atau Password tidak boleh kosong");
