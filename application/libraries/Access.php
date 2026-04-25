@@ -22,6 +22,8 @@ class Access
     /*cek Login User*/
     public function login($username, $password)
     {
+        echo "username: $username, password: $password";
+        die;
         $result=$this->Access_model->get_login_info($username);
         if ($result) {
             //cek status akun
