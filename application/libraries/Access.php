@@ -15,14 +15,14 @@ class Access
         //$auth = $this->CI->config->item('auth');
 
         $this->CI->load->helper('cookie', 'global_function');
-        $this->CI->load->model('access_model');
-        $this->access_model =& $this->CI->access_model;
+        $this->CI->load->model('Access_model');
+        $this->Access_model =& $this->CI->Access_model;
     }
 
     /*cek Login User*/
     public function login($username, $password)
     {
-        $result=$this->access_model->get_login_info($username);
+        $result=$this->Access_model->get_login_info($username);
         if ($result) {
             //cek status akun
             if ($result->status == 0) {
@@ -56,7 +56,7 @@ class Access
     }
 
     function get_akses_list($id) {
-        return $this->access_model->get_akses_list($id);
+        return $this->Access_model->get_akses_list($id);
     }
 
     function boleh($idform) {
@@ -73,7 +73,7 @@ class Access
     }
 
     function getPageID($uri) {
-        $dt = $this->access_model->get_page_id($uri);
+        $dt = $this->Access_model->get_page_id($uri);
         if (isset($dt->id)) {
             return $dt->id;
         } else {
