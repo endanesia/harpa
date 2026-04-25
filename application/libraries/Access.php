@@ -14,16 +14,15 @@ class Access
         $this->CI =& get_instance();
         //$auth = $this->CI->config->item('auth');
 
-        //$this->CI->load->helper('cookie', 'global_function');
-        //$this->CI->load->model('Access_model');
-        //$this->Access_model =& $this->CI->Access_model;
+        $this->CI->load->helper('cookie', 'global_function');
+        $this->CI->load->model('Access_model');
+        $this->Access_model =& $this->CI->Access_model;
     }
 
     /*cek Login User*/
     public function login($username, $password)
     {
-        echo "username: $username, password: $password";
-        die;
+
         $result=$this->Access_model->get_login_info($username);
         if ($result) {
             //cek status akun
