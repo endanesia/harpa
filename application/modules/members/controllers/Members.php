@@ -37,25 +37,24 @@ class Members extends CI_Controller
 
     public function logout()
     {
-        $this->access->logout();
+        $this->Access->logout();
         redirect('members/login');
     }
 
 
     public function authlogin()
     {
-        echo "test";
-        die;
+
         $username = $this->input->post('username',TRUE);
 		$password = $this->input->post('password',TRUE);
-		$login= $this->access->login($username,$password);
+		$login= $this->Access->login($username,$password);
         if($username=="" || $password==""){
             $this->form_validation->set_message("authlogin","Username atau Password tidak boleh kosong");
             return FALSE;
         }else{
             if ($login==200) {
                 $this->form_validation->set_message("authlogin","Selamat Datang ".$this->session->userdata('nama'));
-                $akses = json_encode($this->access->get_akses_list($this->session->akses));
+                $akses = json_encode($this->Access->get_akses_list($this->session->akses));
                 $sess['akses_list'] = $akses;
                 $this->session->set_userdata($sess);
                 return TRUE;
